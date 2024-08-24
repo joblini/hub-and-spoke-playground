@@ -225,7 +225,7 @@ resource firewall 'Microsoft.Network/azureFirewalls@2022-09-01' = if (firewallTi
   }
 }
 
-resource firewallDiagnostics 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
+resource firewallDiagnostics 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = if (firewallTier != 'None') {
   name: workspace.name
   scope: firewall
   properties: {
