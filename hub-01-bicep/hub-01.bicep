@@ -1,8 +1,8 @@
 param location string = 'westeurope'
 param locationSpoke03 string = 'northeurope'
 
-@description('Basic, Standard or Premium tier')
-@allowed([ 'Basic', 'Standard', 'Premium' ])
+@description('None, Basic, Standard or Premium tier')
+@allowed([ 'None', 'Basic', 'Standard', 'Premium' ])
 param firewallTier string = 'Premium'
 var firewallName = 'lab-firewall'
 
@@ -202,7 +202,7 @@ resource firewallManagementIP 'Microsoft.Network/publicIPAddresses@2019-09-01' =
   properties: { publicIPAllocationMethod: 'Static' }
 }
 
-resource firewall 'Microsoft.Network/azureFirewalls@2022-09-01' = {
+resource firewall 'Microsoft.Network/azureFirewalls@2022-09-01' = if (firewallTier != 'None') {
   name: firewallName
   location: location
   dependsOn: [ hubLabVnet, vnetGateway ] // can run into some weird conflict error with the gateway
