@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.29.47.4906",
-      "templateHash": "8866454699064104157"
+      "templateHash": "10335212536006988181"
     }
   },
   "parameters": {
@@ -453,7 +453,7 @@
     {
       "condition": "[parameters('deployGateway')]",
       "type": "Microsoft.Network/publicIPAddresses",
-      "apiVersion": "2019-09-01",
+      "apiVersion": "2020-08-01",
       "name": "[variables('vnetGatewayIPName')]",
       "location": "[parameters('location')]",
       "sku": {
@@ -461,10 +461,7 @@
       },
       "properties": {
         "publicIPAllocationMethod": "Static"
-      },
-      "zones": [
-        ""
-      ]
+      }
     },
     {
       "condition": "[parameters('deployGateway')]",
