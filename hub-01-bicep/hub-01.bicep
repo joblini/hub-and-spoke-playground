@@ -260,6 +260,7 @@ resource vnetGatewayIP 'Microsoft.Network/publicIPAddresses@2019-09-01' = if (de
   location: location
   sku: { name: 'Standard' }
   properties: { publicIPAllocationMethod: 'Static' }
+  zones: [ '' ]
 }
 
 resource vnetGateway 'Microsoft.Network/virtualNetworkGateways@2019-09-01' = if (deployGateway) {
@@ -279,7 +280,7 @@ resource vnetGateway 'Microsoft.Network/virtualNetworkGateways@2019-09-01' = if 
     vpnType: 'RouteBased'
     enableBgp: false
     bgpSettings: null
-    sku: { name: 'VpnGw1AZ', tier: 'VpnGw1AZ' }
+    sku: { name: 'VpnGw1', tier: 'VpnGw1' }
   }
 }
 //END VPN GATEWAY
